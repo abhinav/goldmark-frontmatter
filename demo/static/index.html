@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>goldmark-frontmatter</title>
+    <script src="wasm_exec.js"></script>
+    <script>
+      const go = new Go();
+      WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject).then((result) => {
+        go.run(result.instance);
+      });
+    </script>
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+      .container {
+        max-width: 100%;
+        margin: 0 auto;
+        position: relative;
+      }
+      .input-container {
+        border: 1px solid #ccc;
+        padding: 1em;
+        top: 0;
+        left: 0;
+        width: 45%;
+        position: absolute;
+      }
+      .output-container {
+        border: 1px solid #ccc;
+        padding: 1em;
+        top: 0;
+        left: 50%;
+        width: 45%;
+        position: absolute;
+      }
+
+      #input {
+        width: 100%;
+        height: 60vh;
+      }
+
+      a.frontmatter { text-decoration: none; }
+    </style>
+  </head>
+  <body>
+    <center>
+      <h1><a href="https://github.com/abhinav/goldmark-frontmatter">goldmark-frontmatter</a></h1>
+    </center>
+
+    <div class="container">
+      <div class="input-container">
+        <h2>Input</h2>
+        <textarea id="input" rows="10" cols="80"></textarea>
+
+        <p>
+          <strong>Formats</strong>:
+          <label for="yaml">YAML</label>
+          <input type="checkbox" id="yaml" checked>
+
+          <label for="toml">TOML</label>
+          <input type="checkbox" id="toml" checked>
+        </p>
+      </div>
+
+      <div class="output-container">
+        <h2>Output</h2>
+        <div id="output"></div>
+
+        <h3>Frontmatter</h3>
+        <pre><code id="frontmatter"></code></pre>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const input = document.getElementById("input");
+    const yaml = document.getElementById("yaml");
+    const toml = document.getElementById("toml");
+
+    const output = document.getElementById("output");
+    const frontmatter = document.getElementById("frontmatter");
+
+    input.addEventListener("input", refresh);
+    yaml.addEventListener("change", refresh);
+    toml.addEventListener("change", refresh);
+
+    function refresh() {
+      const res = formatMarkdown({
+        markdown: input.value,
+        yaml: yaml.checked,
+        toml: toml.checked,
+      });
+      if (res.error) {
+        output.innerText = "ERROR: " + res.error;
+        frontmatter.innerText = "";
+      } else {
+        output.innerHTML = res.html;
+        frontmatter.innerText = res.frontmatter;
+      }
+    }
+  </script>
+</html>
