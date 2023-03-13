@@ -1,0 +1,30 @@
+- desc: simple/YAML
+  give: |
+    ---
+    title: foo
+    tags:
+      - a
+      - b
+      - c
+    ---
+
+    Hello
+  want: |
+    <p>Hello</p>
+  data:
+    title: foo
+    tags: [a, b, c]
+
+- desc: simple/TOML
+  give: |
+    +++
+    title = "foo"
+    tags = ["a", "b", "c"]
+    +++
+
+    Hello
+  want: |
+    <p>Hello</p>
+  data:
+    title: foo
+    tags: [a, b, c]

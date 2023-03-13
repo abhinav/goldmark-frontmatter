@@ -1,0 +1,67 @@
+- desc: yaml
+  give: |
+    ---
+    title: Foo bar
+    tags: [a, b, c]
+    ---
+
+    # foo
+  wantFormat: YAML
+  wantRaw: |
+    title: Foo bar
+    tags: [a, b, c]
+
+- desc: toml
+  give: |
+    +++
+    title = "Foo bar"
+    tags = ["a", "b", "c"]
+    +++
+
+    # foo
+  wantFormat: TOML
+  wantRaw: |
+    title = "Foo bar"
+    tags = ["a", "b", "c"]
+
+- desc: long separator line
+  give: |
+    ------------------------
+    title: Foo bar
+    ---
+    tags: [a, b, c]
+    ------------------------
+
+    # foo
+  wantFormat: YAML
+  wantRaw: |
+    title: Foo bar
+    ---
+    tags: [a, b, c]
+
+- desc: custom format
+  formats:
+    - name: docstring
+      delim: '"'
+  give: |
+    """
+    Test message.
+    Foo bar.
+    Baz.
+    """
+
+    # Stuff
+  wantFormat: docstring
+  wantRaw: |
+    Test message.
+    Foo bar.
+    Baz.
+
+- desc: middle of a paragraph
+  give: |
+    Foo bar
+    ----
+    title: Foo bar
+    tags: [a, b, c]
+    ----
+    baz qux
