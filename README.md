@@ -99,7 +99,15 @@ So if the opening line used 10 occurrences, so must the closing.
 
 ### Accessing front matter
 
-To access the front matter parsed by goldmark-frontmatter,
+You can use one of two ways to access front matter
+parsed by goldmark-frontmatter:
+
+* [Decode it into a struct with `frontmatter.Data`](#decode-a-struct)
+* [Read from document metadata](#read-from-document-metadata)
+
+#### Decode a struct
+
+To decode front matter into a struct,
 you must pass in a `parser.Context`
 when you call `Markdown.Convert` or `Parser.Parse`.
 
@@ -111,13 +119,14 @@ md := goldmark.New(
 
 ctx := parser.NewContext()
 md.Convert(src, out, parser.WithContext(ctx))
-
-d := frontmatter.Get(ctx)
 ```
 
-From here, you can decode the front matter into a struct.
+Following that, use `frontmatter.Get` to access a `frontmatter.Data` object.
+Use `Data.Decode` to unmarshal your front matter into a data structure.
 
 ```go
+d := frontmatter.Get(ctx)
+
 var meta struct {
   Title string   `yaml:"title"`
   Tags  []string `yaml:"tags"`
@@ -128,16 +137,43 @@ if err := d.Decode(&meta); err != nil {
 }
 ```
 
-#### Decoding all fields
+You're not limited to structs here.
+You can also decode into `map[string]any` to access all fields.
 
-Decode into a `map[string]any` if you need access to everything
-in the front matter.
 
 ```go
 var meta map[string]any
 if err := fm.Decode(&meta); err != nil {
   // ...
 }
+```
+
+However, if you need that, it's easier to
+[read it from the document metadata](#read-from-document-metadata).
+
+
+#### Read from document metadata
+
+You can install the extension with `frontmatter.SetMetadata` mode:
+
+```go
+md := goldmark.New(
+  goldmark.WithExtensions(&frontmatter.Extender{
+    Mode: frontmatter.SetMetadata,
+  }),
+  // ...
+)
+```
+
+In this mode, the extension will decode the front matter
+into a `map[string]any`,
+and set it on the [Document](https://pkg.go.dev/github.com/yuin/goldmark/ast#Document).
+You can access it with the [Document.Meta method](https://pkg.go.dev/github.com/yuin/goldmark/ast#Document.Meta).
+
+```go
+root := md.Parser().Parse(text.NewReader(src))
+doc := root.OwnerDocument()
+meta := doc.Meta()
 ```
 
 ## Similar projects

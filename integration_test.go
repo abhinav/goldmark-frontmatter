@@ -10,6 +10,7 @@ import (
 	"github.com/stretchr/testify/require"
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/parser"
+	"github.com/yuin/goldmark/text"
 	"go.abhg.dev/goldmark/frontmatter"
 	"gopkg.in/yaml.v3"
 )
@@ -34,23 +35,39 @@ func TestIntegration(t *testing.T) {
 			t.Parallel()
 
 			md := goldmark.New(
-				goldmark.WithExtensions(&frontmatter.Extender{}),
+				goldmark.WithExtensions(&frontmatter.Extender{
+					Mode: frontmatter.SetMetadata,
+				}),
 			)
 
-			ctx := parser.NewContext()
-			var got bytes.Buffer
-			require.NoError(t, md.Convert([]byte(tt.Give), &got, parser.WithContext(ctx)))
-			assert.Equal(t,
-				strings.TrimSuffix(tt.Want, "\n"),
-				strings.TrimSuffix(got.String(), "\n"),
-			)
+			src := []byte(tt.Give)
 
-			meta := frontmatter.Get(ctx)
-			require.NotNil(t, meta)
+			t.Run("Data.Decode", func(t *testing.T) {
+				t.Parallel()
 
-			var gotData map[string]any
-			require.NoError(t, meta.Decode(&gotData))
-			assert.Equal(t, tt.Data, gotData)
+				ctx := parser.NewContext()
+				var got bytes.Buffer
+				require.NoError(t,
+					md.Convert(src, &got, parser.WithContext(ctx)))
+				assert.Equal(t,
+					strings.TrimSuffix(tt.Want, "\n"),
+					strings.TrimSuffix(got.String(), "\n"),
+				)
+
+				meta := frontmatter.Get(ctx)
+				require.NotNil(t, meta)
+
+				var gotData map[string]any
+				require.NoError(t, meta.Decode(&gotData))
+				assert.Equal(t, tt.Data, gotData)
+			})
+
+			t.Run("Document.Meta", func(t *testing.T) {
+				t.Parallel()
+
+				doc := md.Parser().Parse(text.NewReader(src)).OwnerDocument()
+				assert.Equal(t, tt.Data, doc.Meta())
+			})
 		})
 	}
 }
