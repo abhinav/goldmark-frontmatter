@@ -37,6 +37,5 @@ jobs:
     - name: Test
       run: make cover
 
-    # Pending public
-    # - name: Upload coverage
-    #   uses: codecov/codecov-action@v3
+    - name: Upload coverage
+      uses: codecov/codecov-action@v3
