@@ -6,6 +6,24 @@ import (
 	"github.com/yuin/goldmark/util"
 )
 
+// Mode specifies the mode in which the Extender operates.
+// By default, the extender extracts the front matter from the document,
+// but does not render it or do anything else with it.
+//
+// Change the mode by setting the Mode field of the Extender object.
+type Mode int
+
+//go:generate stringer -type Mode
+
+const (
+	// SetMetadata instructs the extender to convert the front matter
+	// into a map[string]interface{} and set it as the metadata
+	// of the document.
+	//
+	// This may be accessed by calling the Document.Meta() method.
+	SetMetadata Mode = 1 << iota
+)
+
 // Extender adds support for front matter to a Goldmark Markdown parser.
 //
 // Use it by installing it into the [goldmark.Markdown] object upon creation.
@@ -25,8 +43,9 @@ type Extender struct {
 	// If empty, DefaultFormats is used.
 	Formats []Format
 
-	// TODO:
-	// Bit map to opt into rendering/setting metadata?
+	// Mode specifies the mode in which the extender operates.
+	// See documentation of the Mode type for more information.
+	Mode Mode
 }
 
 var _ goldmark.Extender = (*Extender)(nil)
@@ -40,4 +59,12 @@ func (e *Extender) Extend(md goldmark.Markdown) {
 			}, 0),
 		),
 	)
+
+	if e.Mode&SetMetadata != 0 {
+		md.Parser().AddOptions(
+			parser.WithASTTransformers(
+				util.Prioritized(&MetaTransformer{}, 0),
+			),
+		)
+	}
 }

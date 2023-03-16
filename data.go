@@ -39,7 +39,7 @@ func (d *Data) Decode(dst any) error {
 	return d.format.Unmarshal(d.raw, dst)
 }
 
-// Set stores front matter data in the [parser.Context].
-func (d *Data) Set(ctx parser.Context) {
+// set stores front matter data in the [parser.Context].
+func (d *Data) set(ctx parser.Context) {
 	ctx.Set(_dataKey, d)
 }

@@ -113,7 +113,7 @@ func (p *Parser) Close(node ast.Node, reader text.Reader, pc parser.Context) {
 	(&Data{
 		format: n.Format,
 		raw:    raw,
-	}).Set(pc)
+	}).set(pc)
 
 	parent := node.Parent()
 	parent.RemoveChild(parent, node)

@@ -8,8 +8,9 @@ GO_FILES = $(shell find . \
 
 REVIVE = bin/revive
 STATICCHECK = bin/staticcheck
+STRINGER = bin/stringer
 
-TOOLS = $(REVIVE) $(STATICCHECK)
+TOOLS = $(REVIVE) $(STATICCHECK) $(STRINGER)
 
 .PHONY: all
 all: build lint test
@@ -25,13 +26,17 @@ tools: $(TOOLS)
 test:
 	go test -v -race ./...
 
+.PHONY: generate
+generate: tools
+	go generate -x ./...
+
 .PHONY: cover
 cover:
 	go test -v -race -coverprofile=cover.out -coverpkg=./... ./...
 	go tool cover -html=cover.out -o cover.html
 
 .PHONY: lint
-lint: gofmt revive staticcheck
+lint: gofmt revive staticcheck check-generate
 
 .PHONY: gofmt
 gofmt:
@@ -49,8 +54,20 @@ revive: $(REVIVE)
 staticcheck: $(STATICCHECK)
 	staticcheck ./...
 
+.PHONY: check-generate
+check-generate: generate
+	@DIFF=$$(git diff --name-only); \
+	if [ -n "$$DIFF" ]; then \
+		echo "--- The following files are dirty:"; \
+		echo "$$DIFF"; \
+		exit 1; \
+	fi
+
 $(REVIVE): tools/go.mod
 	cd tools && go install github.com/mgechev/revive
 
 $(STATICCHECK): tools/go.mod
 	cd tools && go install honnef.co/go/tools/cmd/staticcheck
+
+$(STRINGER): tools/go.mod
+	cd tools && go install golang.org/x/tools/cmd/stringer

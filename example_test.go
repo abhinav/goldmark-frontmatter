@@ -7,6 +7,7 @@ import (
 
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/parser"
+	"github.com/yuin/goldmark/text"
 	"go.abhg.dev/goldmark/frontmatter"
 )
 
@@ -50,6 +51,34 @@ This page is about foo.
 	// Output:
 	// <p>This page is about foo.</p>
 	// ---
+	// Title:  Foo
+	// Tags:  [bar baz]
+}
+
+func ExampleMode_setMetadata() {
+	const src = `+++
+title = "Foo"
+tags = ["bar", "baz"]
++++
+
+This page is about foo.
+`
+
+	md := goldmark.New(
+		goldmark.WithExtensions(
+			&frontmatter.Extender{
+				Mode: frontmatter.SetMetadata,
+			},
+		),
+	)
+
+	doc := md.Parser().Parse(text.NewReader([]byte(src)))
+	meta := doc.OwnerDocument().Meta()
+
+	fmt.Println("Title: ", meta["title"])
+	fmt.Println("Tags: ", meta["tags"])
+
+	// Output:
 	// Title:  Foo
 	// Tags:  [bar baz]
 }
