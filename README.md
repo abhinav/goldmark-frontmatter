@@ -62,7 +62,7 @@ The supported delimiters are:
 
     For example:
 
-    ```
+    ```markdown
     ---
     title: goldmark-frontmatter
     tags: [markdown, goldmark]
@@ -77,7 +77,7 @@ The supported delimiters are:
 
     For example:
 
-    ```
+    ```markdown
     +++
     title = "goldmark-frontmatter"
     tags = ["markdown", "goldmark"]
