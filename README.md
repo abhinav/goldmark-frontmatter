@@ -2,6 +2,7 @@
 
 [![Go Reference](https://pkg.go.dev/badge/go.abhg.dev/goldmark/frontmatter.svg)](https://pkg.go.dev/go.abhg.dev/goldmark/frontmatter)
 [![CI](https://github.com/abhinav/goldmark-frontmatter/actions/workflows/ci.yml/badge.svg)](https://github.com/abhinav/goldmark-frontmatter/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/abhinav/goldmark-frontmatter/branch/main/graph/badge.svg?token=Q47RX5AA3O)](https://codecov.io/gh/abhinav/goldmark-frontmatter)
 
 goldmark-frontmatter is an extension for the [goldmark] Markdown parser
 that adds support for parsing YAML and TOML front matter from Markdown documents.
