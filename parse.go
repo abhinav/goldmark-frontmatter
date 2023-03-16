@@ -52,7 +52,7 @@ func (p *Parser) Trigger() []byte {
 // returning nil if a frontmatter block is not found.
 //
 // This implements [parser.BlockParser].
-func (p *Parser) Open(parent ast.Node, reader text.Reader, pc parser.Context) (ast.Node, parser.State) {
+func (p *Parser) Open(_ ast.Node, reader text.Reader, _ parser.Context) (ast.Node, parser.State) {
 	p.init()
 
 	// Front matter must be at the beginning of the document.
@@ -85,7 +85,7 @@ func (p *Parser) Open(parent ast.Node, reader text.Reader, pc parser.Context) (a
 // transitioning to Close when the block is finished.
 //
 // This implements [parser.BlockParser].
-func (p *Parser) Continue(node ast.Node, reader text.Reader, pc parser.Context) parser.State {
+func (p *Parser) Continue(node ast.Node, reader text.Reader, _ parser.Context) parser.State {
 	p.init()
 
 	n := node.(*frontmatterNode)
