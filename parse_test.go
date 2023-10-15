@@ -77,7 +77,6 @@ func TestParser(t *testing.T) {
 	}
 }
 
-//nolint:paralleltest // modifies os.Stdout
 func TestFrontmatterNode_Dump(t *testing.T) {
 	oldStdout := os.Stdout
 	defer func() { os.Stdout = oldStdout }()
