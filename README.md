@@ -15,6 +15,21 @@ that adds support for parsing YAML and TOML front matter from Markdown documents
 - Allows defining your own front matter formats
 - Exposes front matter in via a types-safe API
 
+#### Comparison to goldmark-meta
+
+[yuin/goldmark-meta](https://github.com/yuin/goldmark-meta)
+is another extension for goldmark that provides support for frontmatter.
+Here's a quick comparison of the two extensions:
+
+| Feature                  | goldmark-frontmatter | goldmark-meta |
+| ------------------------ | -------------------- | ------------- |
+| YAML support (`---`)     | ✅                   | ✅            |
+| TOML support (`+++`)     | ✅                   | ❌            |
+| Custom formats           | ✅                   | ❌            |
+| Decode `map[string]any`  | ✅                   | ✅            |
+| Decode type-safe structs | ✅                   | ❌            |
+| Render as table          | ❌                   | ✅            |
+
 ### Demo
 
 A web-based demonstration of the extension is available at
@@ -176,11 +191,6 @@ root := md.Parser().Parse(text.NewReader(src))
 doc := root.OwnerDocument()
 meta := doc.Meta()
 ```
-
-## Similar projects
-
-- [yuin/goldmark-meta](https://github.com/yuin/goldmark-meta)
-  provides support for YAML front matter.
 
 ## License
 
