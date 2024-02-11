@@ -46,7 +46,7 @@ func TestParser(t *testing.T) {
 				formats = append(formats, Format{
 					Name:  f.Name,
 					Delim: delim,
-					Unmarshal: func(data []byte, v interface{}) error {
+					Unmarshal: func([]byte, interface{}) error {
 						t.Fatalf("unexpected call to %v.Unmarshal", f.Name)
 						return errors.New("unreachable")
 					},
