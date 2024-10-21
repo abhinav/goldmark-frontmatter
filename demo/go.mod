@@ -5,7 +5,7 @@ go 1.20
 replace go.abhg.dev/goldmark/frontmatter => ../
 
 require (
-	github.com/yuin/goldmark v1.7.6
+	github.com/yuin/goldmark v1.7.8
 	go.abhg.dev/goldmark/frontmatter v0.2.0
 )
 
