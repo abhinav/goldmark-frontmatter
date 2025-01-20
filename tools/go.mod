@@ -2,7 +2,7 @@ module go.abhg.dev/goldmark/frontmatter/tools
 
 go 1.22.0
 
-toolchain go1.23.4
+toolchain go1.23.5
 
 require golang.org/x/tools v0.29.0
 
