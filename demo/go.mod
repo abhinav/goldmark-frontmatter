@@ -7,7 +7,7 @@ toolchain go1.24.2
 replace go.abhg.dev/goldmark/frontmatter => ../
 
 require (
-	github.com/yuin/goldmark v1.7.10
+	github.com/yuin/goldmark v1.7.11
 	go.abhg.dev/goldmark/frontmatter v0.2.0
 )
 
