@@ -12,7 +12,7 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
       name: Check out repository
     - name: Set up mise
       uses: jdx/mise-action@v2
@@ -33,7 +33,7 @@ jobs:
       MISE_ENV: ${{ matrix.mise-env }}
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
     - name: Set up mise
       uses: jdx/mise-action@v2
       env:
