@@ -2,7 +2,7 @@ module go.abhg.dev/goldmark/frontmatter
 
 go 1.23.0
 
-toolchain go1.25.0
+toolchain go1.25.1
 
 require (
 	github.com/BurntSushi/toml v1.5.0
