@@ -1,6 +1,6 @@
 module go.abhg.dev/goldmark/frontmatter
 
-go 1.23.0
+go 1.24.0
 
 toolchain go1.25.1
 
@@ -14,9 +14,9 @@ require (
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
-	golang.org/x/mod v0.27.0 // indirect
-	golang.org/x/sync v0.16.0 // indirect
-	golang.org/x/tools v0.36.0 // indirect
+	golang.org/x/mod v0.28.0 // indirect
+	golang.org/x/sync v0.17.0 // indirect
+	golang.org/x/tools v0.37.0 // indirect
 )
 
 tool golang.org/x/tools/cmd/stringer
