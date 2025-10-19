@@ -16,9 +16,9 @@ const _Mode_name = "SetMetadata"
 var _Mode_index = [...]uint8{0, 11}
 
 func (i Mode) String() string {
-	i -= 1
-	if i < 0 || i >= Mode(len(_Mode_index)-1) {
-		return "Mode(" + strconv.FormatInt(int64(i+1), 10) + ")"
+	idx := int(i) - 1
+	if i < 1 || idx >= len(_Mode_index)-1 {
+		return "Mode(" + strconv.FormatInt(int64(i), 10) + ")"
 	}
-	return _Mode_name[_Mode_index[i]:_Mode_index[i+1]]
+	return _Mode_name[_Mode_index[idx]:_Mode_index[idx+1]]
 }
