@@ -8,7 +8,7 @@ replace go.abhg.dev/goldmark/frontmatter => ../
 
 require (
 	github.com/yuin/goldmark v1.7.13
-	go.abhg.dev/goldmark/frontmatter v0.2.0
+	go.abhg.dev/goldmark/frontmatter v0.3.0
 )
 
 require (
