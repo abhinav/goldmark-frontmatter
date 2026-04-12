@@ -2,12 +2,12 @@ module go.abhg.dev/goldmark/frontmatter/demo
 
 go 1.24.0
 
-toolchain go1.25.6
+toolchain go1.26.2
 
 replace go.abhg.dev/goldmark/frontmatter => ../
 
 require (
-	github.com/yuin/goldmark v1.7.16
+	github.com/yuin/goldmark v1.8.2
 	go.abhg.dev/goldmark/frontmatter v0.3.0
 )
 
