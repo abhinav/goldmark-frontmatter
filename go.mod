@@ -2,8 +2,6 @@ module go.abhg.dev/goldmark/frontmatter
 
 go 1.24.0
 
-toolchain go1.25.6
-
 require (
 	github.com/BurntSushi/toml v1.6.0
 	github.com/stretchr/testify v1.11.1
