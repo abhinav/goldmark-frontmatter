@@ -2,7 +2,7 @@ module go.abhg.dev/goldmark/frontmatter/demo
 
 go 1.24.0
 
-toolchain go1.26.2
+toolchain go1.25.9
 
 replace go.abhg.dev/goldmark/frontmatter => ../
 
