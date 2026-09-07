@@ -1,11 +1,11 @@
 module go.abhg.dev/goldmark/frontmatter
 
-go 1.24.0
+go 1.25
 
 require (
 	github.com/BurntSushi/toml v1.6.0
 	github.com/stretchr/testify v1.11.1
-	github.com/yuin/goldmark v1.7.16
+	github.com/yuin/goldmark/v2 v2.0.0
 	gopkg.in/yaml.v3 v3.0.1
 )
 
