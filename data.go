@@ -1,6 +1,6 @@
 package frontmatter
 
-import "github.com/yuin/goldmark/parser"
+import "github.com/yuin/goldmark/v2/parser"
 
 // _dataKey is the ContextKey under which the frontmatter data is stored
 // in the [parser.Context].
