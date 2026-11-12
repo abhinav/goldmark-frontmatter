@@ -47,43 +47,36 @@ backend = "github:abhinav/doc2go"
 checksum = "sha256:fdc4337d9781fae4a45eefd43f128ac3a158f2761c4f31e30ba2daada776c071"
 url = "https://github.com/abhinav/doc2go/releases/download/v0.12.1/doc2go-linux-arm64.tar.gz"
 url_api = "https://api.github.com/repos/abhinav/doc2go/releases/assets/389558989"
-github_attestations = "unavailable"
 
 [tools."github:abhinav/doc2go"."platforms.linux-arm64-musl"]
 checksum = "sha256:fdc4337d9781fae4a45eefd43f128ac3a158f2761c4f31e30ba2daada776c071"
 url = "https://github.com/abhinav/doc2go/releases/download/v0.12.1/doc2go-linux-arm64.tar.gz"
 url_api = "https://api.github.com/repos/abhinav/doc2go/releases/assets/389558989"
-github_attestations = "unavailable"
 
 [tools."github:abhinav/doc2go"."platforms.linux-x64"]
 checksum = "sha256:9657c9c3823e7bfe71563806676ce115c5e0c0c359da6801965d2b4b3f0ef848"
 url = "https://github.com/abhinav/doc2go/releases/download/v0.12.1/doc2go-linux-amd64.tar.gz"
 url_api = "https://api.github.com/repos/abhinav/doc2go/releases/assets/389558981"
-github_attestations = "unavailable"
 
 [tools."github:abhinav/doc2go"."platforms.linux-x64-musl"]
 checksum = "sha256:9657c9c3823e7bfe71563806676ce115c5e0c0c359da6801965d2b4b3f0ef848"
 url = "https://github.com/abhinav/doc2go/releases/download/v0.12.1/doc2go-linux-amd64.tar.gz"
 url_api = "https://api.github.com/repos/abhinav/doc2go/releases/assets/389558981"
-github_attestations = "unavailable"
 
 [tools."github:abhinav/doc2go"."platforms.macos-arm64"]
 checksum = "sha256:0c26adbdb679499cd3ab086a9dba025d8e4d2c7ef40afc276f3c41cc9929b233"
 url = "https://github.com/abhinav/doc2go/releases/download/v0.12.1/doc2go-darwin-arm64.tar.gz"
 url_api = "https://api.github.com/repos/abhinav/doc2go/releases/assets/389558980"
-github_attestations = "unavailable"
 
 [tools."github:abhinav/doc2go"."platforms.macos-x64"]
 checksum = "sha256:9d050fede3eadfcfbdfb259fe9b1610cfa0eb3cf3fdf44f841b79b777934d4b5"
 url = "https://github.com/abhinav/doc2go/releases/download/v0.12.1/doc2go-darwin-amd64.tar.gz"
 url_api = "https://api.github.com/repos/abhinav/doc2go/releases/assets/389558982"
-github_attestations = "unavailable"
 
 [tools."github:abhinav/doc2go"."platforms.windows-x64"]
 checksum = "sha256:170322dc0ba2648f37d58c6b6e92e397a479ebb7978bbc9beba27f1ea6709000"
 url = "https://github.com/abhinav/doc2go/releases/download/v0.12.1/doc2go-windows-amd64.tar.gz"
 url_api = "https://api.github.com/repos/abhinav/doc2go/releases/assets/389558991"
-github_attestations = "unavailable"
 
 [[tools."github:miniscruff/changie"]]
 version = "1.24.0"
@@ -93,43 +86,36 @@ backend = "github:miniscruff/changie"
 checksum = "sha256:0eaf34f01c24f7825614897427e42553070fb4407070a33759f82b117a6c3afc"
 url = "https://github.com/miniscruff/changie/releases/download/v1.24.0/changie_1.24.0_linux_arm64.tar.gz"
 url_api = "https://api.github.com/repos/miniscruff/changie/releases/assets/319542127"
-github_attestations = "unavailable"
 
 [tools."github:miniscruff/changie"."platforms.linux-arm64-musl"]
 checksum = "sha256:0eaf34f01c24f7825614897427e42553070fb4407070a33759f82b117a6c3afc"
 url = "https://github.com/miniscruff/changie/releases/download/v1.24.0/changie_1.24.0_linux_arm64.tar.gz"
 url_api = "https://api.github.com/repos/miniscruff/changie/releases/assets/319542127"
-github_attestations = "unavailable"
 
 [tools."github:miniscruff/changie"."platforms.linux-x64"]
 checksum = "sha256:706937c1874eb7c270d15f644d8a84a74dfa7f27778cbc8ca9cb045a0d68d9df"
 url = "https://github.com/miniscruff/changie/releases/download/v1.24.0/changie_1.24.0_linux_amd64.tar.gz"
 url_api = "https://api.github.com/repos/miniscruff/changie/releases/assets/319542133"
-github_attestations = "unavailable"
 
 [tools."github:miniscruff/changie"."platforms.linux-x64-musl"]
 checksum = "sha256:706937c1874eb7c270d15f644d8a84a74dfa7f27778cbc8ca9cb045a0d68d9df"
 url = "https://github.com/miniscruff/changie/releases/download/v1.24.0/changie_1.24.0_linux_amd64.tar.gz"
 url_api = "https://api.github.com/repos/miniscruff/changie/releases/assets/319542133"
-github_attestations = "unavailable"
 
 [tools."github:miniscruff/changie"."platforms.macos-arm64"]
 checksum = "sha256:cdbca27a073fc741c5ff08e9792444f459dbc5cff151ecb7118f2fdab9ea346f"
 url = "https://github.com/miniscruff/changie/releases/download/v1.24.0/changie_1.24.0_darwin_arm64.tar.gz"
 url_api = "https://api.github.com/repos/miniscruff/changie/releases/assets/319542132"
-github_attestations = "unavailable"
 
 [tools."github:miniscruff/changie"."platforms.macos-x64"]
 checksum = "sha256:4ffd88cb50b2ad382b609318a41be81e7d29a750be7607fab7024e76cccb67fa"
 url = "https://github.com/miniscruff/changie/releases/download/v1.24.0/changie_1.24.0_darwin_amd64.tar.gz"
 url_api = "https://api.github.com/repos/miniscruff/changie/releases/assets/319542130"
-github_attestations = "unavailable"
 
 [tools."github:miniscruff/changie"."platforms.windows-x64"]
 checksum = "sha256:4a90748c1da0179afe282599b562e75ef2cb5ce34e25d5f67e70ef20725b9e1d"
 url = "https://github.com/miniscruff/changie/releases/download/v1.24.0/changie_1.24.0_windows_amd64.zip"
 url_api = "https://api.github.com/repos/miniscruff/changie/releases/assets/319542125"
-github_attestations = "unavailable"
 
 [[tools.go]]
 version = "1.26.3"
